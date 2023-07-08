@@ -19,7 +19,7 @@ export default function RootLayout({
         <Header />
 
         {children}
-
+        {/* Footes */}
         <footer>
           <Footer />
         </footer>

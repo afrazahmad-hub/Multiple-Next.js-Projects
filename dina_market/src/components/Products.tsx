@@ -1,8 +1,19 @@
+import React, { Component } from "react";
 import Image from "next/image";
+import Slider from "react-slick";
 
 const Products = () => {
+  let settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <section className="mt-16">
+      {/* // <Slider{ ...settings}>
+      // </Slider> */}
       <div className="flex flex-col items-center">
         <h6 className="text-blue-700 font-bold">PRODUCTS</h6>
         <h1 className="text-3xl font-bold">Check What We Have</h1>
@@ -165,7 +176,6 @@ const Products = () => {
           </div>
         </div>
       </div>
-      Afraz
     </section>
   );
 };

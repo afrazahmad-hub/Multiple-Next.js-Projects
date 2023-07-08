@@ -17,11 +17,11 @@ export const todoTable = pgTable("todos", {
 });
 
 // to get data
-export type todo = InferModel<typeof todoTable>;
+export type Todo = InferModel<typeof todoTable>;
 
 // to insert data
 
-export type newTodo = InferModel<typeof todoTable, "insert">;
+export type NewTodo = InferModel<typeof todoTable, "insert">;
 
 export const db = drizzle(sql);
 

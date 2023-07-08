@@ -1,9 +1,11 @@
-import { todo } from "@/lib/Drizzle";
+import { Todo } from "@/lib/Drizzle";
 
 const getData = async () => {
   // when use async function, always use tryCatch too
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/todo");
+    const res = await fetch("http://127.0.0.1:3000/api/todo", {
+      headers: { "Content-Type": "application/json" },
+    });
 
     // if not res, then througn error
     if (!res.ok) {
@@ -18,19 +20,22 @@ const getData = async () => {
 };
 
 const TodoList = async () => {
-  const res: { data: todo[] } = await getData();
+  const res: { data: Todo[] } = await getData();
 
   return (
-    <>
+    <div className="max-h-[350px] overflow-auto mb-4 ">
       {res.data.map((item) => {
         return (
-          <div className="bg-gray-300 p-4 shadow rounded-lg flex items-center gap-4 font-medium my-4">
+          <div
+            key={item.id}
+            className="bg-gray-300 p-4 shadow rounded-lg flex items-center gap-4 font-medium my-4"
+          >
             <div className="bg-primary h-3 w-3 rounded-full"></div>
             <p className="text-lg">{item.task}</p>
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

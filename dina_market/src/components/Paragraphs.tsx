@@ -4,7 +4,7 @@ import Link from "next/link";
 const Paragraphs = () => {
   return (
     <section>
-      <div className=" max-w-md mt-16 right-0">
+      <div className="max-w-md mt-16 right-0">
         <h1 className="text-5xl font-bold tracking-wide">
           Unique and Authentic Vintage Designer Jewellery
         </h1>

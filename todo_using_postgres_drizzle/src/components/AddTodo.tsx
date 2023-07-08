@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { newTodo } from "@/lib/Drizzle";
+import { NewTodo } from "@/lib/Drizzle";
+import { useRouter } from "next/navigation";
 
 import { TfiArrowCircleRight } from "react-icons/tfi";
 
 const AddTodo = () => {
-  const [task, setTask] = useState<newTodo | null>(null);
+  const [task, setTask] = useState<NewTodo | null>(null);
+  const { refresh } = useRouter();
 
-  const handleSubmit = async () => {
+  async function handleSubmit() {
     try {
       if (task) {
         const resTask = await fetch("/api/todo", {
@@ -17,15 +19,21 @@ const AddTodo = () => {
             task: task.task,
           }),
         });
+
         console.log("Task Response:", resTask);
+        // refresh fumction from useRouter
+        refresh();
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error: ", error);
     }
-  };
+  }
   return (
     <div>
-      <form className="flex items-center justify-center space-x-5 w-full">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex items-center justify-center space-x-5 w-full"
+      >
         <input
           onChange={(e) => setTask({ task: e.target.value })}
           type="text"
