@@ -33,13 +33,13 @@ const page = () => {
             <h4 className="mt-12 font-bold text-gray-800">SELECT SIZE</h4>
             <div className="flex   ">
               {sizes.map((size) => (
-                <div
-                  key={size.id}
-                  className="flex justify-center items-center hover:shadow-xl cursor-pointer h-9 w-9 rounded-full mt-2 gap-x-4"
-                >
-                  {/* <span className="text-gray-400 text-lg font-bold"> */}
-                  {size.size}
-                  {/* </span> */}
+                <div className="flex justify-center items-center hover:shadow-xl cursor-pointer h-9 w-9 rounded-full mt-2 gap-x-4">
+                  <span
+                    key={size.id}
+                    className="text-gray-400 text-lg font-bold"
+                  >
+                    {size.size}
+                  </span>
                 </div>
               ))}
             </div>
