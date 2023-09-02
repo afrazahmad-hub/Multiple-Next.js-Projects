@@ -64,7 +64,15 @@ import Image from "next/image";
 import ProductCounter from "@/components/ProductCounter";
 import Wrapper from "@/components/Wrapper";
 
-const sizes = ["XS", "S", "M", "L", "XL"];
+const sizes = [
+  { id: 1, size: "XS" },
+  { id: 2, size: "S" },
+  { id: 3, size: "M" },
+  { id: 4, size: "L" },
+  { id: 5, size: "XL" },
+];
+
+// ["XS", "S", "M", "L", "XL"];
 
 const singleProductData = async (slug1: string) => {
   const res = await client.fetch(
@@ -115,9 +123,12 @@ const page = async ({ params }: { params: { slug: string } }) => {
             <h4 className="mt-12 font-bold text-gray-800">SELECT SIZE</h4>
             <div className="flex   ">
               {sizes.map((size) => (
-                <div className="flex justify-center items-center hover:shadow-xl cursor-pointer h-9 w-9 rounded-full mt-2 gap-x-4">
+                <div
+                  key={size.id}
+                  className="flex justify-center items-center hover:shadow-xl cursor-pointer h-9 w-9 rounded-full mt-2 gap-x-4"
+                >
                   <span className="text-gray-400 text-lg font-bold">
-                    {size}
+                    {size.size}
                   </span>
                 </div>
               ))}

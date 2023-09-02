@@ -28,7 +28,7 @@ const Signup = () => {
       router.push("/login");
     } catch (error: any) {
       toast.error(error.message);
-      console.log("Sign up Failed !", error);
+      console.log("Sign up Failed !", error.message);
     } finally {
       setLoading(false);
     }
@@ -36,8 +36,9 @@ const Signup = () => {
 
   useEffect(() => {
     if (
-      (user.username.length > 0,
-      user.email.length > 0 && user.password.length > 0)
+      user.username.length > 0 &&
+      user.email.length > 0 &&
+      user.password.length > 0
     ) {
       setButtonDisabled(false);
     } else {
@@ -52,6 +53,7 @@ const Signup = () => {
       <span className="text-white text-lg mt-6">User Name</span>
       <input
         type="text"
+        value={user.username}
         placeholder="User Name"
         required
         onChange={(e) => setUser({ ...user, username: e.target.value })}
@@ -60,6 +62,7 @@ const Signup = () => {
       <span className="text-white text-lg mt-6">Email</span>
       <input
         type="text"
+        value={user.email}
         placeholder="Email"
         required
         onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -68,6 +71,7 @@ const Signup = () => {
       <span className="text-white text-lg mt-6">Password</span>
       <input
         type="password"
+        value={user.password}
         placeholder="Password"
         required
         onChange={(e) => setUser({ ...user, password: e.target.value })}

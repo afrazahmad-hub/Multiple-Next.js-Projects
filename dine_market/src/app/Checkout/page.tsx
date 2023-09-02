@@ -177,7 +177,7 @@ const getProductData = async (product_id: string) => {
   return sanityResponse[0];
 };
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
 
@@ -225,7 +225,7 @@ const page = () => {
       ) : data.length > 0 ? (
         <div className="mt-6">
           {data.map((item: any) => (
-            <div className="flex justify-between">
+            <div key={item._id} className="flex justify-between">
               <div className="flex space-x-8 mt-8">
                 <Image
                   src={urlForImage(item.productData.image).url()}
@@ -298,4 +298,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

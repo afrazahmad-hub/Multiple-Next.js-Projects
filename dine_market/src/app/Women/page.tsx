@@ -8,7 +8,7 @@ import { client } from "@/lib/sanityClient";
 import ProductCard from "@/components/ProductCard";
 
 // function for fatching data from sanity client
-export const fetchProductData = async () => {
+const fetchProductData = async () => {
   const res =
     await client.fetch(`*[_type=="products" && category->name == "Female"]{
     _id,

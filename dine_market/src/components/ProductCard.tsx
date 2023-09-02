@@ -36,7 +36,6 @@ const ProductCard: FC<{ items: any }> = ({ items }) => {
         <p>{items.pType}</p>
         <h3>$ {items.price}</h3>
         <h3>{items.category.name}</h3>
-        <p>{items.slug.current} </p>
       </Link>
       <button
         onClick={handleAddCart}
